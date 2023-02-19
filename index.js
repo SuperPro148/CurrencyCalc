@@ -33,7 +33,14 @@ client.once("ready", () => {
 client.on("messageCreate", (msg) => {
     let args = msg.content.toLowerCase().split(" ");
     if (args[0] === "$calc") {
-        process(msg, args);
+        if (args.length >= 4) {
+            process(msg, args);
+        } else if (args.length === 3) {
+            args.push("1");
+            process(msg, args);
+        } else {
+            msg.channel.send("error: not enough arguments");
+        }
     }
     if (args[0] === "$update" && msg.author.id === auth.id) {
         update();
@@ -56,7 +63,7 @@ function update() {
 function process(msg, args) {
     let currOne = args[1].toUpperCase();
     let currTwo = args[2].toUpperCase();
-    let amount = parseInt(args[3]);
+    let amount = parseFloat(args[3]);
     if (rates[currOne] === undefined || rates[currTwo] === undefined) {
         msg.channel.send("error: invalid currency code");
     } else if (Number.isNaN(amount) || amount <= 0 || amount > 1000000000000) {
