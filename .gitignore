@@ -1,0 +1,5 @@
+/node_modules
+
+# api key, discord token
+
+auth.json

@@ -1,0 +1,14 @@
+{
+  "name": "currencycalc",
+  "version": "1.0.0",
+  "description": "A discord bot designed to easily and quickly convert currencies, with exchange rates updated daily",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "14.7.1"
+  },
+  "author": "SuperPro148",
+  "license": "GPL-3.0-only"
+}
